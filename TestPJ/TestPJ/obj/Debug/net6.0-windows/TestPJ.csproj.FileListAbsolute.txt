@@ -25,3 +25,7 @@ D:\TTCNKTPM\TestPJ\TestPJ\bin\Debug\net6.0-windows\selenium-manager\windows\sele
 D:\TTCNKTPM\TestPJ\TestPJ\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 D:\TTCNKTPM\TestPJ\TestPJ\bin\Debug\net6.0-windows\WebDriver.dll
 D:\TTCNKTPM\TestPJ\TestPJ\obj\Debug\net6.0-windows\TestPJ.csproj.CopyComplete
+D:\TTCNKTPM\TestPJ\TestPJ\obj\Debug\net6.0-windows\Admin\TrangChuAdmin.g.cs
+D:\TTCNKTPM\TestPJ\TestPJ\obj\Debug\net6.0-windows\Admin\TrangChuAdmin.baml
+D:\TTCNKTPM\TestPJ\TestPJ\obj\Debug\net6.0-windows\NhanVien\TrangChuNV.g.cs
+D:\TTCNKTPM\TestPJ\TestPJ\obj\Debug\net6.0-windows\NhanVien\TrangChuNV.baml

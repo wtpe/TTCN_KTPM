@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\TTCNKTPM\TestPJ\TestPJ\App.xaml
-11407045341
+31287588897
 
-5-153383732
+7-1546259935
 196-2012303544
-MainWindow.xaml;
+Admin\TrangChuAdmin.xaml;MainWindow.xaml;NhanVien\TrangChuNV.xaml;
 
 True
 
