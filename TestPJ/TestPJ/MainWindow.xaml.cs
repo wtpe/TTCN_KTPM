@@ -15,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestPJ.Admin;
+using TestPJ.Models;
+using TestPJ.NhanVien;
 
 namespace TestPJ
 {
@@ -23,23 +26,62 @@ namespace TestPJ
     /// </summary>
     public partial class MainWindow : Window
     {
+        private QLCHXeContext _context;
         public MainWindow()
         {
             InitializeComponent();
+            _context = new QLCHXeContext();
         }
 
-       
+
 
         private void btnDN_Click(object sender, RoutedEventArgs e)
         {
-           if(txtTk.Text == "admin" && txtMK.Text == "12345678")
+            try
             {
-                MessageBox.Show("Hello");
+                string passWord = txtMK.Password;
+                if (string.IsNullOrEmpty(passWord) || string.IsNullOrEmpty(txtTk.Text))
+                {
+                    MessageBox.Show("Tk or Password cant be empty or null", "Thong bao", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    var tk = _context.Accounts.SingleOrDefault(x => x.TaiKhoan == txtTk.Text);
+                    if (tk != null)
+                    {
+                        if (tk.Quyen == 1 && tk.Matkhau.Equals(passWord))
+                        {
+                            TrangChuAdmin trangChuAdmin = new TrangChuAdmin();
+                            trangChuAdmin.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                            trangChuAdmin.Show();
+                            this.Close();
+                        }
+                        else if (tk.Quyen == 0 && tk.Matkhau.Equals(passWord))
+                        {
+                            TrangChuNV trangChuNV = new TrangChuNV();
+                            trangChuNV.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                            trangChuNV.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Mat khat khong ton tai", "Thong bao", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tai khoan or Mat khat khong ton tai", "Thong bao", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("error");
+
+                MessageBox.Show("Error: " + ex.ToString(), "Thong bao", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
 
         private void lbFeedB_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

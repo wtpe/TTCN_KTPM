@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="300" Width="450"
+        WindowStartupLocation="CenterScreen"
         >
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -24,7 +25,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBox x:Name="txtTk" Margin="0,10,0,0" Padding="0,5,0,5"/>
-            <TextBox x:Name="txtMK" Margin="0,10,0,0" Padding="0,5,0,5"/>
+            <PasswordBox x:Name="txtMK" Margin="0,10,0,0" Padding="0,5,0,5"/>
             <Button x:Name="btnDN" Cursor="Hand" Width="100" Height="25" Margin="0,20,0,0" Content="Dang nhap" Click="btnDN_Click"/>
             <Label x:Name="lbFeedB"  Cursor="Hand" Foreground="#FF0E3DD5" FontStyle="Italic" Padding="0" FontSize="14" HorizontalAlignment="Right" Margin="0,50,0,0" MouseLeftButtonUp="lbFeedB_MouseLeftButtonUp" >
                 <TextBlock Style="{DynamicResource labelStyle}" FontFamily="Times New Roman"   >FeedBack to Admin</TextBlock>
