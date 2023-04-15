@@ -1,0 +1,27 @@
+﻿<Window x:Class="TestPJ.Admin.QLNV"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestPJ.Admin"
+        mc:Ignorable="d"
+        Title="Quan ly nhan vien"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="50"/>
+            
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Width="50" Height="25" HorizontalAlignment="Left">Ma nv:</Label>
+            <TextBox x:Name="txtMaNV" Width="200" VerticalAlignment="Top" Margin="-10"></TextBox>
+            <Label Width="50" Height="25" HorizontalAlignment="Left">Ho ten:</Label>
+            <Label Width="50" Height="25" HorizontalAlignment="Left">Ngay sinh:</Label>
+        </StackPanel>
+    </Grid>
+</Window>

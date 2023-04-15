@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Admin\QLNV.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Admin\TrangChuAdmin.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +18,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Admin\QLNV.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Admin\TrangChuAdmin.xaml">
       <SubType>Designer</SubType>
     </Page>
