@@ -60,3 +60,5 @@ D:\TTCNKTPM\TestPJ\TestPJ\bin\Debug\net6.0-windows\runtimes\win-arm64\native\Mic
 D:\TTCNKTPM\TestPJ\TestPJ\bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\TTCNKTPM\TestPJ\TestPJ\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\TTCNKTPM\TestPJ\TestPJ\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\TTCNKTPM\TestPJ\TestPJ\obj\Debug\net6.0-windows\Admin\QLNV.g.cs
+D:\TTCNKTPM\TestPJ\TestPJ\obj\Debug\net6.0-windows\Admin\QLNV.baml

@@ -6,22 +6,52 @@
         xmlns:local="clr-namespace:TestPJ.Admin"
         mc:Ignorable="d"
         Title="Quan ly nhan vien"
-        WindowState="Maximized">
+       Width="1000" Height="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="500"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="500"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition Width="50"/>
-            
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Width="50" Height="25" HorizontalAlignment="Left">Ma nv:</Label>
-            <TextBox x:Name="txtMaNV" Width="200" VerticalAlignment="Top" Margin="-10"></TextBox>
-            <Label Width="50" Height="25" HorizontalAlignment="Left">Ho ten:</Label>
-            <Label Width="50" Height="25" HorizontalAlignment="Left">Ngay sinh:</Label>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Ma NV:" FontSize="12" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="txtMaNV" VerticalAlignment="Center" Width="100" Margin="10,0,0,0"></TextBox>
+            </StackPanel>
         </StackPanel>
+        
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Margin="50,50,50,50" x:Name="dtgNV" IsReadOnly="True" AutoGenerateColumns="False" Foreground="Red">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ma NV" Binding="{Binding MaNv}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ten NV" Binding="{Binding TenNv}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ngay Sinh" Binding="{Binding NgaySinh}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Dia chi" Binding="{Binding DiaChiNv}"></DataGridTextColumn>
+                <DataGridTextColumn Header="SDT" Binding="{Binding Sodienthoai}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0" Background="BlanchedAlmond" Padding="5">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="12" Text="Tai Khoan:" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Taikhoan}" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="12" Text="Mat khau:" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Matkhau}" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="12" Text="Quyen:" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Quyen}" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+
     </Grid>
 </Window>

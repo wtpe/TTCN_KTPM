@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestPJ.Models;
 
 namespace TestPJ.Admin
 {
@@ -19,9 +20,32 @@ namespace TestPJ.Admin
     /// </summary>
     public partial class QLNV : Window
     {
+        private QLCHXeContext db;
+        public void LoadDataGrid()
+        {
+            var nv = from i in db.NhanViens
+                     join j in db.Accounts on i.Taikhoan equals j.TaiKhoan
+                     where j.Quyen == 0
+                     select new
+                     {
+                         MaNv = i.MaNv,
+                         TenNv = i.TenNv,
+                         NgaySinh = i.NgaySinh.ToString(),
+                         DiaChiNv = i.DiaChiNv,
+                         Sodienthoai = i.Sodienthoai,
+                         Taikhoan = i.Taikhoan,
+                         Matkhau = j.Matkhau,
+                         Quyen = "Nhan vien"
+                     };
+            dtgNV.ItemsSource = nv.ToList();
+            
+        }
         public QLNV()
         {
+            
             InitializeComponent();
+            db = new QLCHXeContext();
+            LoadDataGrid();
         }
     }
 }
