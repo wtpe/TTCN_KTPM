@@ -9,24 +9,56 @@
        Width="1000" Height="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="500"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Grid.Row="0" Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="Ma NV:" FontSize="12" VerticalAlignment="Center"></TextBlock>
-                <TextBox x:Name="txtMaNV" VerticalAlignment="Center" Width="100" Margin="10,0,0,0"></TextBox>
+                <TextBox x:Name="txtMaNV" VerticalAlignment="Center" Width="150" Margin="10,0,0,0"></TextBox>
             </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Ten NV:" FontSize="12" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="txtTenNV" VerticalAlignment="Center" Width="150" Margin="10,0,0,0"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Gioi tinh:" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0"></TextBlock>
+                <ComboBox x:Name="cbxGender">
+                    <ComboBoxItem IsSelected="True">Nam</ComboBoxItem>
+                    <ComboBoxItem>Nu</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Dia chi:" FontSize="12"></TextBlock>
+                <TextBox x:Name="txtDiaChi" Width="150" Margin="45,0,0,0" VerticalAlignment="Center" TextChanged="txtDiaChi_TextChanged"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="So dien thoai:" FontSize="12"></TextBlock>
+                <TextBox x:Name="txtSodt" Width="150" VerticalAlignment="Top" Margin="10,0,0,0"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Ngay Sinh:" FontSize="12"></TextBlock>
+                <DatePicker Width="150"  Margin="25,0,0,0" VerticalAlignment="Top" x:Name="txtNgaySinh"></DatePicker>
+            </StackPanel>
+            
         </StackPanel>
         
         <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Margin="50,50,50,50" x:Name="dtgNV" IsReadOnly="True" AutoGenerateColumns="False" Foreground="Red">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ma NV" Binding="{Binding MaNv}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ma NV" Binding="{Binding MaNv}"/>
                 <DataGridTextColumn Header="Ten NV" Binding="{Binding TenNv}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Gioi tinh" Binding="{Binding Gender}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Ngay Sinh" Binding="{Binding NgaySinh}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Dia chi" Binding="{Binding DiaChiNv}"></DataGridTextColumn>
                 <DataGridTextColumn Header="SDT" Binding="{Binding Sodienthoai}" Width="*"></DataGridTextColumn>

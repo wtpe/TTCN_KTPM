@@ -31,6 +31,7 @@ namespace TestPJ.Admin
                          MaNv = i.MaNv,
                          TenNv = i.TenNv,
                          NgaySinh = i.NgaySinh.ToString(),
+                         Gender = i.Gender,
                          DiaChiNv = i.DiaChiNv,
                          Sodienthoai = i.Sodienthoai,
                          Taikhoan = i.Taikhoan,
@@ -46,6 +47,20 @@ namespace TestPJ.Admin
             InitializeComponent();
             db = new QLCHXeContext();
             LoadDataGrid();
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txtDiaChi_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtDiaChi.Text, "[^0-9]") || txtDiaChi.Text.Length > 10)
+            {
+                MessageBox.Show("Please enter only numbers.");
+                txtDiaChi.Text = txtDiaChi.Text.Remove(txtDiaChi.Text.Length - 1);
+            }
         }
     }
 }
