@@ -15,12 +15,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <TextBlock Text="Ma NV:" FontSize="12" VerticalAlignment="Center"></TextBlock>
-                <TextBox x:Name="txtMaNV" VerticalAlignment="Center" Width="150" Margin="10,0,0,0"></TextBox>
-            </StackPanel>
+        <StackPanel Grid.Row="0" Margin="20,20,0,0" Orientation="Vertical">
+           
             
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="Ten NV:" FontSize="12" VerticalAlignment="Center"></TextBlock>
@@ -30,60 +28,94 @@
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="Gioi tinh:" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0"></TextBlock>
                 <ComboBox x:Name="cbxGender">
-                    <ComboBoxItem IsSelected="True">Nam</ComboBoxItem>
-                    <ComboBoxItem>Nu</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True" Content="Nam"/>
+                    <ComboBoxItem Content="Nu"/>
                 </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Tai Khoan:" FontSize="12" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="txtTenTk" VerticalAlignment="Center" Width="100" Margin="10,0,0,0"></TextBox>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Orientation="Vertical">
+        <StackPanel Grid.Column="1" Margin="20,20,0,0" Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="Dia chi:" FontSize="12"></TextBlock>
-                <TextBox x:Name="txtDiaChi" Width="150" Margin="45,0,0,0" VerticalAlignment="Center" TextChanged="txtDiaChi_TextChanged"></TextBox>
+                <TextBox x:Name="txtDiaChi" Width="150" Margin="45,0,0,0" VerticalAlignment="Center"></TextBox>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="So dien thoai:" FontSize="12"></TextBlock>
-                <TextBox x:Name="txtSodt" Width="150" VerticalAlignment="Top" Margin="10,0,0,0"></TextBox>
+                <TextBox x:Name="txtSodt" Width="150" VerticalAlignment="Top" Margin="10,0,0,0" TextChanged="txtSodt_TextChanged"></TextBox>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBlock Text="Ngay Sinh:" FontSize="12"></TextBlock>
                 <DatePicker Width="150"  Margin="25,0,0,0" VerticalAlignment="Top" x:Name="txtNgaySinh"></DatePicker>
             </StackPanel>
-            
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Mat khau:" FontSize="12" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="txtMatKhau" VerticalAlignment="Center" Width="150" Margin="26,0,0,0"></TextBox>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="2">
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Button HorizontalAlignment="Left" x:Name="btnThem" Width="100" VerticalAlignment="Center" Padding="10" Margin="10" Click="btnThem_Click">Them</Button>
+                <Button x:Name="btnSua" Width="100" VerticalAlignment="Center" Padding="10" Margin="10" Click="btnSua_Click">Sua</Button>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20">
+                <Button x:Name="btnXoa" Width="100" VerticalAlignment="Center" Padding="10" Margin="10" Click="btnXoa_Click">Xoa</Button>
+                <Button x:Name="BtnClear" Width="100" VerticalAlignment="Center" Padding="10" Margin="10" Click="BtnClear_Click">Clear</Button>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="50,0,0,0"  Grid.ColumnSpan="2" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBlock Text="Tim nhan vien:" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="txtTim" Width="150" VerticalAlignment="Center" Margin="20,0,0,0"></TextBox>
+                <Button x:Name="btnTim" Padding="20,10,20,10" Margin="30,0,0,0" VerticalAlignment="Center" Click="btnTim_Click">Xem</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3">
+            <DataGrid Margin="50,50,50,50" x:Name="dtgNV" IsReadOnly="True" AutoGenerateColumns="False" Foreground="Red" SelectedCellsChanged="dtgNV_SelectedCellsChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ma NV" Binding="{Binding MaNv}"/>
+                    <DataGridTextColumn Header="Ten NV" Binding="{Binding TenNv}"/>
+                    <DataGridTextColumn Header="Gioi tinh" Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Header="Ngay Sinh" Binding="{Binding NgaySinh}"/>
+                    <DataGridTextColumn Header="Dia chi" Binding="{Binding DiaChiNv}"/>
+                    <DataGridTextColumn Header="Tai Khoan" Binding="{Binding Taikhoan}"/>
+                    <DataGridTextColumn Header="SDT" Binding="{Binding Sodienthoai}"/>
+                    <DataGridTextColumn Header="Chuc vu" Binding="{Binding Quyen}" Width="*"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0" Background="BlanchedAlmond" Padding="5">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Tai Khoan:" VerticalAlignment="Center"></TextBlock>
+                                    <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Taikhoan}" VerticalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Mat khau:" VerticalAlignment="Center"></TextBlock>
+                                    <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Matkhau}" VerticalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="12" Text="Quyen:" VerticalAlignment="Center"></TextBlock>
+                                    <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Quyen}" VerticalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
         </StackPanel>
         
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Margin="50,50,50,50" x:Name="dtgNV" IsReadOnly="True" AutoGenerateColumns="False" Foreground="Red">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Ma NV" Binding="{Binding MaNv}"/>
-                <DataGridTextColumn Header="Ten NV" Binding="{Binding TenNv}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Gioi tinh" Binding="{Binding Gender}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ngay Sinh" Binding="{Binding NgaySinh}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Dia chi" Binding="{Binding DiaChiNv}"></DataGridTextColumn>
-                <DataGridTextColumn Header="SDT" Binding="{Binding Sodienthoai}" Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <Border BorderThickness="0" Background="BlanchedAlmond" Padding="5">
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="Tai Khoan:" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Taikhoan}" VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="Mat khau:" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Matkhau}" VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontSize="12" Text="Quyen:" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock FontSize="12" Foreground="MidnightBlue" Text="{Binding Quyen}" VerticalAlignment="Center"></TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
 
     </Grid>
 </Window>

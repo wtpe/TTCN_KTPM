@@ -20,6 +20,7 @@ namespace TestPJ.Models
         public string? Taikhoan { get; set; }
         public string? Gender { get; set; }
 
+
         public virtual Account? TaikhoanNavigation { get; set; }
         public virtual ICollection<HoaDon> HoaDons { get; set; }
         public virtual ICollection<HopDongThue> HopDongThues { get; set; }
